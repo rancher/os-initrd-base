@@ -1,0 +1,17 @@
+#!/bin/bash
+set -e
+
+cd $(dirname $0)/..
+
+: ${CONFIG:=$(pwd)/config}
+: ${DIST:=$(pwd)/dist}
+: ${ARCH:='amd64 arm64'}
+
+echo "about to build ${ARCH}"
+
+mkdir -p ${DIST}/artifacts
+
+for arch in $ARCH; do
+  ./scripts/build-busybox "build" ${CONFIG}/${arch}/buildroot-config-static ${CONFIG}/busybox-dynamic.config ${DIST}/artifacts/os-initrd-base_${arch}.tar.xz
+  ./scripts/package ${arch}
+done

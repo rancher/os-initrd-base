@@ -1,6 +1,5 @@
-./bin
-./.dapper
-./dist
-./.trash-cache
-./trash.lock
-
+build
+dist
+.buildroot-ccache
+.kernel-ccache
+.dl

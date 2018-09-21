@@ -1,0 +1,25 @@
+#!/bin/bash
+set -e
+
+cd $(dirname $0)/..
+
+rm -rf build/stage
+mkdir -p build/stage
+mkdir -p dist
+pushd build/stage
+
+BASE=$(echo ../buildroot-*/output/target/)
+
+mkdir -p usr/bin usr/share
+
+cp $BASE/bin/busybox usr/bin
+cp $BASE/usr/sbin/xtables-multi usr/bin/iptables
+
+ln -s bin usr/sbin
+
+ln -s busybox usr/bin/ps
+ln -s busybox usr/bin/modprobe
+ln -s busybox usr/bin/mount
+ln -s busybox usr/bin/umount
+
+tar cvzf ../../dist/base-files_${1}.tar.gz .

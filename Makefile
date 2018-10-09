@@ -1,4 +1,4 @@
-TARGETS := $(shell ls scripts)
+TARGETS := $(shell ls scripts | grep -vE 'clean|build-busybox|entry|package')
 
 .dapper:
 	@echo Downloading dapper

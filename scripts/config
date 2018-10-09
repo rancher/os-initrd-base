@@ -12,5 +12,5 @@ echo "about to update config ${ARCH}"
 mkdir -p ${DIST}/artifacts
 
 for arch in $ARCH; do
-  ./scripts/build-busybox "config" ${CONFIG}/${arch}/buildroot-config-static ${CONFIG}/busybox-dynamic.config ${DIST}/artifacts/os-initrd-base_${arch}
+  ./scripts/build-busybox "config" ${CONFIG}/${arch}/buildroot-config-static ${CONFIG}/busybox-dynamic.config
 done

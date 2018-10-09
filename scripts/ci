@@ -12,6 +12,6 @@ echo "about to build ${ARCH}"
 mkdir -p ${DIST}/artifacts
 
 for arch in $ARCH; do
-  ./scripts/build-busybox "build" ${CONFIG}/${arch}/buildroot-config-static ${CONFIG}/busybox-dynamic.config ${DIST}/artifacts/os-initrd-base_${arch}.tar.xz
+  ./scripts/build-busybox "build" ${CONFIG}/${arch}/buildroot-config-static ${CONFIG}/busybox-dynamic.config
   ./scripts/package ${arch}
 done

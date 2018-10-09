@@ -3,17 +3,15 @@ set -e
 
 cd $(dirname $0)/..
 
-: ${ARTIFACTS:=$(pwd)/assets}
 : ${BUILD:=$(pwd)/build}
+: ${DIST:=$(pwd)/dist}
 
 busybox_install()
 {
     local build=$1
     local conf=$2
     local bbconf=$3
-    local target=$4
-    echo "SO $build, $conf, $bbconf, $target"
-    echo "SO $target"
+    echo "SO $build, $conf, $bbconf"
 
     mkdir -p ${BUILD}
     cd ${BUILD}
@@ -38,15 +36,14 @@ busybox_install()
     fi
     export HOME=${BUILD}
     make oldconfig
-    cp .config ${target}.config
+    cp .config ${DIST}/artifacts/$(basename $conf)
     if [ -n "$bbconf" ]; then
-        cp package/busybox/$(basename $bbconf) ${target}.$(basename $bbconf)
+        cp package/busybox/$(basename $bbconf) ${DIST}/artifacts/$(basename $bbconf)
     fi
 
     if [ "$build" == "build" ]; then
         make
-        tar cvJf $target -C output/images .
     fi
 }
 
-busybox_install "$1" "$2" "$3" "$4"
+busybox_install "$1" "$2" "$3"

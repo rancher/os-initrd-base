@@ -21,4 +21,4 @@ ln -s busybox usr/bin/modprobe
 ln -s busybox usr/bin/mount
 ln -s busybox usr/bin/echo
 
-tar cvzf ../../dist/base-files_${1}.tar.gz .
+tar cvzf ../../dist/artifacts/os-initrd-base-${1}.tar.gz .

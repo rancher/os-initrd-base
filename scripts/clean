@@ -6,4 +6,5 @@ rm -rf build dist
 
 docker rmi -f $(docker images | grep "<none>" | awk '{print $3}')
 docker rmi $(docker images --format "{{.Repository}}:{{.Tag}}" | grep os-initrd-base) || true
-docker rmi $(docker images --filter dangling=true -q) ||true
+docker rmi $(docker images --filter dangling=true -q) || true
+git clean -dxf || true

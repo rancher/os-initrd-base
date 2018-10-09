@@ -12,8 +12,8 @@ ENV SHELL /bin/bash
 ENV ARTIFACTS /usr/src
 WORKDIR ${DAPPER_SOURCE}
 
-ENV VERSION 2018.02-1
-ENV TARBALL ${VERSION}.tar.gz
+ENV BUILDROOT_VERSION 2018.02-1
+ENV TARBALL ${BUILDROOT_VERSION}.tar.gz
 RUN cd ${ARTIFACTS} && \
     wget https://github.com/rancher/buildroot/archive/$TARBALL
 

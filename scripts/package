@@ -11,7 +11,9 @@ pushd build/stage
 BASE=$(echo ../*/output/target/)
 
 mkdir -p usr/bin
+mkdir -p usr/etc/ssl/certs/
 
+cp ../../assets/ca-certificates.crt usr/etc/ssl/certs/
 cp $BASE/bin/busybox usr/bin
 cp $BASE/usr/sbin/xtables-multi usr/bin/iptables
 cp $BASE/usr/bin/xz usr/bin/xz
@@ -20,5 +22,6 @@ ln -s busybox usr/bin/ps
 ln -s busybox usr/bin/modprobe
 ln -s busybox usr/bin/mount
 ln -s busybox usr/bin/echo
+ln -s busybox usr/bin/mkdir
 
 tar cvzf ../../dist/artifacts/os-initrd-base-${1}.tar.gz .
